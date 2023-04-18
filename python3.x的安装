@@ -1,0 +1,32 @@
+Python3.11安装：
+cd Python-3.11.1
+./configure --prefix=/usr/local/python3
+
+make && make install
+
+cd /usr/local/python3/
+
+./bin/python3 
+Python 3.11.1 (main, Jan  6 2023, 23:12:42) [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+
+##说明python3已经安装成功
+因为centos7已经安装python2.7，所以先删除python2.7
+
+
+rm -rf /usr/bin/python
+
+ln -s /usr/local/python3/bin/python3.11 /usr/bin/python
+
+
+应为yum程序使用了python2.7的环境所以为了不影响yum的正常使用需要修改两个文件
+vim /usr/libexec/urlgrabber-ext-down
+vim /usr/bin/yum
+
+将第一行的#! /usr/bin/python2修改为#! /usr/bin/python2
+
+这样python3就算安装完毕！
+
+
+pip install -i http://pypi.douban.com/simple/  psutil -U --trusted-host pypi.douban.com
