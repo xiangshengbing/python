@@ -1,0 +1,9 @@
+file = open(file='D:/2.txt', mode='r', encoding='UTF-8')
+file_bak = open(file='D:/2.txt.bak', mode='w', encoding='UTF-8')
+for line in file:
+    file_line = line.strip()
+    if file_line.split(',')[4] == "测试":
+        continue
+    file_bak.write(f"{file_line}\n")
+file.close()
+file_bak.close()
